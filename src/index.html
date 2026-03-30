@@ -1,13 +1,288 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Portfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.71/build/spline-viewer.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Coiny&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <script>
+
+
+    const apiKey = "b81e973f990ac268391d9d35ae22f6d0";
+
+    const url =
+      "https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=" +
+      apiKey +
+      "&units=metric";
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url, true);
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        const city = data.name;
+        const temp = data.main.temp;
+
+        document.getElementById("city").innerHTML = city;
+        document.getElementById("temp").innerHTML = temp + "°C";
+      }
+    };
+
+    xhr.send();
+
+    counter = 1;
+    function goTo(id) {
+      while (counter <= 2) {
+        const element = document.getElementById(id);
+        counter++;
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }
+
+      counter = 1;
+
+    }
+
+
+
+  </script>
+
 </head>
+<script src="https://unpkg.com/oneko@1.2.0/dist/oneko.js"></script>
+
 <body>
-  <app-root></app-root>
+
+  <!-- <app-root></app-root> -->
+
+  <nav>
+    <div class="left">
+      <div class="logo">
+        <h1 data-aos="fade-down" data-aos-duration="1500">GLITCHGOD</h1>
+      </div>
+
+      <div id="weather">
+        <div id="city"></div>
+        <div id="temp"></div>
+      </div>
+    </div>
+<div class="right">
+  <ul>
+      <li><a href="#" onclick="goTo('card2');" data-aos="fade-down" data-aos-duration="1500">About</a></li>
+      <li><a href="#" onclick="goTo('card3');" data-aos="fade-down" data-aos-duration="1500">Skills</a></li>
+      <li><a href="#" onclick="goTo('card4');" data-aos="fade-down" data-aos-duration="1500">Projects</a></li>
+      <li><a href="#" onclick="goTo('card5');" data-aos="fade-down" data-aos-duration="1500">Contact</a></li>
+    </ul>
+</div>
+    
+  </nav>
+  <section class="stack">
+
+    <div class="card" id="card1">
+      <div class="hero-content">
+        <p data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="1500">PORT<br>FOLIO</p>
+
+        <div class="icons">
+          <div class="icon-inside" id="icon1" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+            data-aos-duration="1500"><a href="https://github.com/GLITCHGOD1611" target="_blank"><i
+                class="fab fa-github"></i></a></div>
+          <div class="icon-inside" id="icon2" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+            data-aos-duration="2000"><a href="https://www.linkedin.com/in/omkar-deshmane-526155340/" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a></div>
+          <div class="icon-inside" id="icon3" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+            data-aos-duration="2500"><a href="https://x.com/ODeshmane65144" target="_blank"><i
+                class="fab fa-twitter"></i></a></div>
+          <div class="icon-inside" id="icon4" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+            data-aos-duration="3000"><a href="https://leetcode.com/u/GLITCHGOD/" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z" />
+              </svg></a></div>
+        </div>
+
+      </div>
+
+      <div class="hero-img" data-aos="fade-up" data-aos-duration="3000">
+        <img src="lufi.png" alt="">
+      </div>
+
+
+
+    </div>
+
+    <div class="card" id="card2">
+      <img src="enhanced.png" data-aos="fade-up" data-aos-duration="3000" alt="" class="about-img">
+      <p class="about" id="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">ABOUT-ME</p>
+      <p class="about-content" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">I am a developer
+        who loves transforming ideas into interactive web experiences. With a strong interest in full-stack development,
+        I focus on building responsive interfaces and reliable backend systems using modern web technologies. </p>
+      <a href="resume.pdf" download class="resume-dwn"  data-aos="fade-up" data-aos="fade-up">
+        <i class="fa-solid fa-download"></i> Download Resume
+      </a>
+    </div>
+
+    <div class="card" id="card3">
+      <p class="c3title" data-aos="fade-up" data-aos-duration="1500">STUFF I KNOW</p>
+
+      <div class="skills-container">
+        <div class="dcontainer">
+          <h1 data-aos="fade-right" data-aos-duration="1500">- Design</h1>
+          <div class="languages">
+            <div class="skill" data-aos="zoom-in" data-aos-duration="500"><a href="https://www.figma.com/"
+                target="_blank"><i class="fa-brands fa-figma"></i>-Figma</a></div>
+          </div>
+        </div>
+        <div class="dcontainer">
+          <h1 data-aos="fade-right" data-aos-duration="1600">- Frontend</h1>
+          <div class="languages">
+            <div class="skill" data-aos="zoom-in" data-aos-duration="500"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><i
+                  class="fa-brands fa-html5"></i>-HTML</a></div>
+            <div class="skill" data-aos="zoom-in" data-aos-duration="600"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><i
+                  class="fa-brands fa-css3-alt"></i>-CSS</a></div>
+            <div class="skill" data-aos="zoom-in" data-aos-duration="700"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><i
+                  class="fa-brands fa-js"></i>-Javascript</a></div>
+            <div class="skill" data-aos="zoom-in" data-aos-duration="800"><a href="https://angular.io/"
+                target="_blank"><i class="fa-brands fa-angular"></i>-Angular</a></div>
+          </div>
+        </div>
+        <div class="dcontainer">
+          <h1 data-aos="fade-right" data-aos-duration="1700">- Backend</h1>
+          <div class="languages">
+            <div class="skill" data-aos="zoom-in" data-aos-duration="500"><a href="https://nodejs.org/en/"
+                target="_blank"><i class="fa-brands fa-node-js"></i>-NODEJS</a></div>
+            <div class="skill" data-aos="zoom-in" data-aos-duration="600"><a href="https://expressjs.com/"
+                target="_blank"><i class="fa-brands fa-node-js"></i>-EXPRESS</a></div>
+          </div>
+        </div>
+        <div class="dcontainer">
+          <h1 data-aos="fade-right" data-aos-duration="1800">- Database</h1>
+          <div class="languages">
+            <div class="skill" data-aos="zoom-in" data-aos-duration="500"><a href="https://www.mongodb.com/"
+                target="_blank"><i class="fa-solid fa-leaf"></i>-MongoDB</a></div>
+            <div class="skill" data-aos="zoom-in" data-aos-duration="600"><a href="https://www.mysql.com/"
+                target="_blank"><i class="fa-solid fa-database"></i>-MYSQL</a></div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+    <div class="card" id="card4">
+      <p class="projets-title" data-aos="fade-down" data-aos-duration="1500">PROJECTS</p>
+    
+      <div class="projects-section">
+
+        <!-- LEFT SIDE TEXT -->
+        <div class="project-list">
+          <div class="project" data-img="bakery.png" data-aos="fade-up" data-aos-duration="1000"><a
+              href="https://github.com/GLITCHGOD1611/bakery-management-system" target="_blank"><i
+                class="fa-brands fa-github"></i>-<a href=" https://lnkd.in/dt_T3C-Y"
+                target="_blank">bakery-management-system</a></div>
+          <div class="project" data-img="user.png" data-aos="fade-up" data-aos-duration="1500"><a
+              href="https://github.com/GLITCHGOD1611/user-management-system" target="_blank"><i
+                class="fa-brands fa-github"></i>-<a href="https://lnkd.in/d8aqF4sY"
+                target="_blank">User-management-system</a></div>
+          <div class="project" data-img="clg.png" data-aos="fade-up" data-aos-duration="2000"><a
+              href="https://github.com/GLITCHGOD1611/cas-project" target="_blank"><i
+                class="fa-brands fa-github"></i>-college-management-system</a></div>
+        </div>
+
+        <!-- RIGHT SIDE IMAGE -->
+        <div class="preview">
+          <img id="preview-img" src="bakery.png" />
+        </div>
+
+      </div>
+
+    </div>
+    <div class="card" id="card5">
+
+<h1 class="contact-title">GET IN TOUCH</h1>   
+<hr class="contact-hr">
+   <div class="contact-container">
+        <div class="contact" data-aos="fade-right" data-aos-duration="1500">
+          <i class="fa-brands fa-github"></i>
+          <a href="https://github.com/GLITCHGOD1611" target="_blank">-Github</a>
+        </div>
+        <div class="contact" data-aos="fade-right" data-aos-duration="1600">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/omkar-deshmane-526155340/" target="_blank">-Linkedin</a>
+        </div>
+        <div class="contact" data-aos="fade-right" data-aos-duration="1700">
+          <i class="fa-brands fa-instagram"></i>
+          <a href="https://www.instagram.com/omkar_n.d_1611/" target="_blank">-Instagram</a>
+        </div>
+        <div class="contact" data-aos="fade-right" data-aos-duration="1800">
+          <i class="fa-brands fa-telegram"></i>
+          <a href="https://t.me/GLITCHGOD1611" target="_blank">-Telegram</a>
+        </div>
+        <div class="contact" data-aos="fade-right" data-aos-duration="1900">
+          <i class="fa-brands fa-x-twitter"></i>
+          <a href="https://x.com/ODeshmane65144" target="_blank">-Twitter</a>
+        </div>
+        <div class="contact" data-aos="fade-right" data-aos-duration="2000">
+          <i class="fa-solid fa-envelope"></i>
+
+          <a href="https://mail.google.com/mail/?view=cm&to=omkardeshmane832@gmail.com" target="_blank">-Gmail</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- this is image preview code for projects section, when you hover on project name it will show the image on right side -->
+  <script>
+    const projects = document.querySelectorAll('.project');
+    const previewImg = document.getElementById('preview-img');
+
+    projects.forEach(project => {
+      project.addEventListener('mouseenter', () => {
+        const img = project.dataset.img;
+
+        // 🔥 random angle between -5deg to +5deg
+        const randomRotate = (Math.random() * 10 - 5).toFixed(2);
+
+        previewImg.src = img;
+        previewImg.style.opacity = 1;
+        previewImg.style.transform = `scale(1) rotate(${randomRotate}deg)`;
+      });
+
+      project.addEventListener('mouseleave', () => {
+        previewImg.style.opacity = 0;
+        previewImg.style.transform = "scale(0.95) rotate(0deg)";
+      });
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
 </body>
+
 </html>
